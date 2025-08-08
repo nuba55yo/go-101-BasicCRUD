@@ -1,0 +1,172 @@
+basePath: /
+definitions:
+  dto.CreateBookRequest:
+    properties:
+      author:
+        minLength: 1
+        type: string
+      title:
+        minLength: 1
+        type: string
+    required:
+    - author
+    - title
+    type: object
+  dto.UpdateBookRequest:
+    properties:
+      author:
+        minLength: 1
+        type: string
+      title:
+        minLength: 1
+        type: string
+    required:
+    - author
+    - title
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: ตัวอย่าง API จัดการหนังสือ (Gin + GORM + Postgres)
+  title: Book API (Go)
+  version: "1.0"
+paths:
+  /books:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              additionalProperties: true
+              type: object
+            type: array
+      summary: ดึงรายการหนังสือทั้งหมด
+      tags:
+      - books
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateBookRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "409":
+          description: Conflict
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: สร้างหนังสือใหม่
+      tags:
+      - books
+  /books/{id}:
+    delete:
+      parameters:
+      - description: book id
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: ลบหนังสือ (soft delete)
+      tags:
+      - books
+    get:
+      parameters:
+      - description: book id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: ดึงหนังสือตามรหัส
+      tags:
+      - books
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: book id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: payload
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateBookRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "409":
+          description: Conflict
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: แก้ไขหนังสือ
+      tags:
+      - books
+schemes:
+- http
+swagger: "2.0"
