@@ -30,10 +30,6 @@ go install github.com/swaggo/swag/cmd/swag@latest
 
 # Swagger UI (router ใช้)
 go get github.com/swaggo/gin-swagger github.com/swaggo/files
-
-# เก็บ dependency ให้เรียบร้อย
-go mod tidy
-
 ```
 
 ---
