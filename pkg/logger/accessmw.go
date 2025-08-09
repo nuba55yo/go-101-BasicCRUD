@@ -17,7 +17,12 @@ func moduleFromRoute(route string) string {
 	if route == "" {
 		return "api"
 	}
-	return strings.SplitN(route, "/", 2)[0]
+	parts := strings.Split(route, "/")
+	// ข้าม /api/{version}
+	if len(parts) >= 3 && parts[0] == "api" && strings.HasPrefix(parts[1], "v") {
+		return parts[2]
+	}
+	return parts[0]
 }
 
 // bodyLogWriter ดัก response body ที่ framework จะส่งออก เพื่อเก็บสำเนาไปลง log

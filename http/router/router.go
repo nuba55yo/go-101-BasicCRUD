@@ -2,36 +2,36 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 
-	"github.com/nuba55yo/go-101-bookapi/http/handlers"
+	v1 "github.com/nuba55yo/go-101-bookapi/http/handlers/v1"
+	v2 "github.com/nuba55yo/go-101-bookapi/http/handlers/v2"
 	"github.com/nuba55yo/go-101-bookapi/pkg/logger"
 	"github.com/nuba55yo/go-101-bookapi/service"
 )
 
-// New สร้าง *gin.Engine พร้อม middleware และทุกเส้นทางของระบบ
 func New(bookService service.BookService) *gin.Engine {
-	// ใช้ gin.New() เพื่อกำหนด middleware เอง
-	router := gin.New()
+	r := gin.New()
+	_ = r.SetTrustedProxies(nil)
+	r.Use(gin.Logger(), gin.Recovery(), logger.AccessLog())
 
-	// กันเตือน proxy ใน dev และเพิ่ม middleware พื้นฐาน
-	_ = router.SetTrustedProxies(nil)
-	router.Use(gin.Logger())    // access log แบบสั้นๆ ไป stdout
-	router.Use(gin.Recovery())  // กันโปรแกรมตายเมื่อ panic
+	// v1 -> ต้องเรียก v1.* เท่านั้น
+	apiV1 := r.Group("/api/v1")
+	{
+		apiV1.GET("/books", v1.GetBooks(bookService))
+		apiV1.GET("/books/:id", v1.GetBook(bookService))
+		apiV1.POST("/books", v1.CreateBook(bookService))
+		apiV1.PUT("/books/:id", v1.UpdateBook(bookService))
+		apiV1.DELETE("/books/:id", v1.DeleteBook(bookService))
+	}
 
-	// เขียน log แบบละเอียดของเรา (เก็บทั้ง request + response, ทุกสถานะ)
-	router.Use(logger.AccessLog())
-
-	// Swagger UI (อย่าไปประกาศซ้ำที่ main)
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
-	// เส้นทางของ Book
-	router.GET("/books", handlers.GetBooks(bookService))
-	router.GET("/books/:id", handlers.GetBook(bookService))
-	router.POST("/books", handlers.CreateBook(bookService))
-	router.PUT("/books/:id", handlers.UpdateBook(bookService))
-	router.DELETE("/books/:id", handlers.DeleteBook(bookService))
-
-	return router
+	// v2 -> ต้องเรียก v2.* เท่านั้น
+	apiV2 := r.Group("/api/v2")
+	{
+		apiV2.GET("/books", v2.GetBooks(bookService))
+		apiV2.GET("/books/:id", v2.GetBook(bookService))
+		apiV2.POST("/books", v2.CreateBook(bookService))
+		apiV2.PUT("/books/:id", v2.UpdateBook(bookService))
+		apiV2.DELETE("/books/:id", v2.DeleteBook(bookService))
+	}
+	return r
 }

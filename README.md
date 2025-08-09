@@ -1,6 +1,6 @@
 # CRUD Book API ด้วย Go + Gin + GORM + PostgreSQL
 
-มี **Swagger**, **Validation (ห้ามชื่อซ้ำ)** และ **Logging** (บันทึก request/response, แยกโฟลเดอร์รายวัน, หมุนไฟล์ใหม่ทุก 10 นาที)
+มี **Swagger**, **API Version Control** , **Validation (ห้ามชื่อซ้ำ)** และ **Logging** (บันทึก request/response, แยกโฟลเดอร์รายวัน, หมุนไฟล์ใหม่ทุก 10 นาที)
 
 ## Go packages
 

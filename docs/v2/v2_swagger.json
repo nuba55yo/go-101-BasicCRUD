@@ -4,13 +4,13 @@
     ],
     "swagger": "2.0",
     "info": {
-        "description": "ตัวอย่าง API จัดการหนังสือ (Gin + GORM + Postgres)",
-        "title": "Book API (Go)",
+        "description": "เวอร์ชันสองของ Book API (อาจเปลี่ยนรูปแบบ response บางส่วน)",
+        "title": "Book API (v2)",
         "contact": {},
-        "version": "1.0"
+        "version": "2.0"
     },
     "host": "localhost:8080",
-    "basePath": "/",
+    "basePath": "/api/v2",
     "paths": {
         "/books": {
             "get": {
@@ -18,18 +18,15 @@
                     "application/json"
                 ],
                 "tags": [
-                    "books"
+                    "books-v2"
                 ],
-                "summary": "ดึงรายการหนังสือทั้งหมด",
+                "summary": "List books (v2)",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "additionalProperties": true
-                            }
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     }
                 }
@@ -42,9 +39,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "books"
+                    "books-v2"
                 ],
-                "summary": "สร้างหนังสือใหม่",
+                "summary": "Create book (v2)",
                 "parameters": [
                     {
                         "description": "payload",
@@ -91,9 +88,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "books"
+                    "books-v2"
                 ],
-                "summary": "ดึงหนังสือตามรหัส",
+                "summary": "Get book by id (v2)",
                 "parameters": [
                     {
                         "type": "integer",
@@ -130,9 +127,9 @@
                     "application/json"
                 ],
                 "tags": [
-                    "books"
+                    "books-v2"
                 ],
-                "summary": "แก้ไขหนังสือ",
+                "summary": "Update book (v2)",
                 "parameters": [
                     {
                         "type": "integer",
@@ -190,9 +187,9 @@
             },
             "delete": {
                 "tags": [
-                    "books"
+                    "books-v2"
                 ],
-                "summary": "ลบหนังสือ (soft delete)",
+                "summary": "Delete book (soft delete) (v2)",
                 "parameters": [
                     {
                         "type": "integer",

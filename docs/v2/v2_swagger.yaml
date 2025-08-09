@@ -1,4 +1,4 @@
-basePath: /
+basePath: /api/v2
 definitions:
   dto.CreateBookRequest:
     properties:
@@ -27,9 +27,9 @@ definitions:
 host: localhost:8080
 info:
   contact: {}
-  description: ตัวอย่าง API จัดการหนังสือ (Gin + GORM + Postgres)
-  title: Book API (Go)
-  version: "1.0"
+  description: เวอร์ชันสองของ Book API (อาจเปลี่ยนรูปแบบ response บางส่วน)
+  title: Book API (v2)
+  version: "2.0"
 paths:
   /books:
     get:
@@ -39,13 +39,11 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              additionalProperties: true
-              type: object
-            type: array
-      summary: ดึงรายการหนังสือทั้งหมด
+            additionalProperties: true
+            type: object
+      summary: List books (v2)
       tags:
-      - books
+      - books-v2
     post:
       consumes:
       - application/json
@@ -76,9 +74,9 @@ paths:
             additionalProperties:
               type: string
             type: object
-      summary: สร้างหนังสือใหม่
+      summary: Create book (v2)
       tags:
-      - books
+      - books-v2
   /books/{id}:
     delete:
       parameters:
@@ -96,9 +94,9 @@ paths:
             additionalProperties:
               type: string
             type: object
-      summary: ลบหนังสือ (soft delete)
+      summary: Delete book (soft delete) (v2)
       tags:
-      - books
+      - books-v2
     get:
       parameters:
       - description: book id
@@ -120,9 +118,9 @@ paths:
             additionalProperties:
               type: string
             type: object
-      summary: ดึงหนังสือตามรหัส
+      summary: Get book by id (v2)
       tags:
-      - books
+      - books-v2
     put:
       consumes:
       - application/json
@@ -164,9 +162,9 @@ paths:
             additionalProperties:
               type: string
             type: object
-      summary: แก้ไขหนังสือ
+      summary: Update book (v2)
       tags:
-      - books
+      - books-v2
 schemes:
 - http
 swagger: "2.0"
