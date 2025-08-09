@@ -2,9 +2,9 @@
 
 ## Swagger Screenshots
 
-![Swagger UI v1](docs/images/swagger_v1.png)
+![Swagger UI v1](docs/images/swagger_v1.PNG)
 
-![Swagger UI v1](docs/images/swagger_v2.png)
+![Swagger UI v1](docs/images/swagger_v2.PNG)
 
 **ฟีเจอร์หลัก**
 - CRUD หนังสือด้วย **Gin** + **GORM** + **PostgreSQL**
