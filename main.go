@@ -32,17 +32,17 @@ func main() {
 	// DI
 	bookRepo := repository.NewBookRepository(database.DB)
 	bookSvc := service.NewBookService(bookRepo)
-	r := router.New(bookSvc)
+	httpRouter := router.New(bookSvc)
 
 	// ---------- เสิร์ฟสเปค (doc.json) แยกเวอร์ชัน ----------
 	// อย่าลบ InstanceName ออก เพื่อแยก v1/v2 ให้ชัดเจน
-	r.GET("/docs/v1/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.InstanceName("v1")))
-	r.GET("/docs/v2/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.InstanceName("v2")))
+	httpRouter.GET("/docs/v1/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.InstanceName("v1")))
+	httpRouter.GET("/docs/v2/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.InstanceName("v2")))
 
 	// ---------- Swagger UI แบบหน้าเดียว + Dropdown v1/v2 ----------
 	// ไม่ใช้ ginSwagger.URL/URLs เลย เพื่อเลี่ยงปัญหาเวอร์ชัน/แคช
-	r.GET("/swagger", swaggerIndex())
-	r.GET("/swagger/index.html", func(c *gin.Context) {
+	httpRouter.GET("/swagger", swaggerIndex())
+	httpRouter.GET("/swagger/index.html", func(c *gin.Context) {
 		// ให้พารามิเตอร์ที่มากับ /swagger/index.html ติดไปด้วย
 		raw := c.Request.URL.RawQuery
 		if raw != "" {
@@ -56,7 +56,7 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	_ = r.Run(":" + port)
+	_ = httpRouter.Run(":" + port)
 }
 
 // swaggerIndex คืน HTML ของ Swagger UI (ใช้ CDN) และมี dropdown v1/v2

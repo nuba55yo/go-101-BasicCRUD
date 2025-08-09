@@ -1,5 +1,15 @@
 # CRUD Book API — Go + Gin + GORM + PostgreSQL
 
+## Swagger Screenshots
+
+<p align="center">
+  <img src="docs/images/swagger_v1.png" alt="Swagger UI v1" width="720">
+</p>
+
+<p align="center">
+  <img src="docs/images/swagger_v2.png" alt="Swagger UI v2" width="720">
+</p>
+
 **ฟีเจอร์หลัก**
 - CRUD หนังสือด้วย **Gin** + **GORM** + **PostgreSQL**
 - **Swagger** พร้อม **API Version Control** (v1 / v2) — หน้าเดียว `/swagger` มี **dropdown** เลือกเวอร์ชัน
@@ -197,7 +207,7 @@ func New(svc service.BookService) *gin.Engine {
 _ "github.com/nuba55yo/go-101-bookapi/docs/v3"
 
 // เสิร์ฟ doc.json ของ v3
-r.GET("/docs/v3/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.InstanceName("v3")))
+httpRouter.GET("/docs/v3/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.InstanceName("v3")))
 ```
 
 ถ้าใช้หน้า Swagger แบบ **custom HTML** (ใน `main.go`) ให้เพิ่มรายการ v3 เข้าไป:
