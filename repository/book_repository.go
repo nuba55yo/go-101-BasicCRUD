@@ -4,7 +4,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nuba55yo/go-101-bookapi/models"
+	"github.com/nuba55yo/go-101-BasicCRUD/models"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )

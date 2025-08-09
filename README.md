@@ -1,4 +1,4 @@
-# CRUD Book API — Go + Gin + GORM + PostgreSQL
+# BasicCRUD Book API — Go + Gin + GORM + PostgreSQL
 
 **ฟีเจอร์หลัก**
 - CRUD หนังสือด้วย **Gin** + **GORM** + **PostgreSQL**
@@ -181,7 +181,7 @@ package v3
 ```go
 import (
     // ...
-    v3 "github.com/nuba55yo/go-101-bookapi/http/handlers/v3"
+    v3 "github.com/nuba55yo/go-101-BasicCRUD/http/handlers/v3"
 )
 
 func New(svc service.BookService) *gin.Engine {
@@ -204,7 +204,7 @@ func New(svc service.BookService) *gin.Engine {
 3) main.go — เพิ่มเส้นทางสเปกและ dropdown
 ```go
 // import docs v3
-_ "github.com/nuba55yo/go-101-bookapi/docs/v3"
+_ "github.com/nuba55yo/go-101-BasicCRUD/docs/v3"
 
 // เสิร์ฟ doc.json ของ v3
 httpRouter.GET("/docs/v3/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.InstanceName("v3")))

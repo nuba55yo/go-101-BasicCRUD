@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/nuba55yo/go-101-bookapi/dto"
-	"github.com/nuba55yo/go-101-bookapi/service"
+	"github.com/nuba55yo/go-101-BasicCRUD/dto"
+	"github.com/nuba55yo/go-101-BasicCRUD/service"
 	"github.com/gin-gonic/gin"
 )
 

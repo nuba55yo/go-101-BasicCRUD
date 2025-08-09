@@ -9,15 +9,15 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 
 	// สำคัญ: ต้อง gen เอกสารไว้ก่อน และ import สองเวอร์ชันนี้
-	_ "github.com/nuba55yo/go-101-bookapi/docs/v1"
-	_ "github.com/nuba55yo/go-101-bookapi/docs/v2"
+	_ "github.com/nuba55yo/go-101-BasicCRUD/docs/v1"
+	_ "github.com/nuba55yo/go-101-BasicCRUD/docs/v2"
 
-	"github.com/nuba55yo/go-101-bookapi/database"
-	"github.com/nuba55yo/go-101-bookapi/http/router"
-	"github.com/nuba55yo/go-101-bookapi/models"
-	"github.com/nuba55yo/go-101-bookapi/pkg/logger"
-	"github.com/nuba55yo/go-101-bookapi/repository"
-	"github.com/nuba55yo/go-101-bookapi/service"
+	"github.com/nuba55yo/go-101-BasicCRUD/database"
+	"github.com/nuba55yo/go-101-BasicCRUD/http/router"
+	"github.com/nuba55yo/go-101-BasicCRUD/models"
+	"github.com/nuba55yo/go-101-BasicCRUD/pkg/logger"
+	"github.com/nuba55yo/go-101-BasicCRUD/repository"
+	"github.com/nuba55yo/go-101-BasicCRUD/service"
 )
 
 func main() {

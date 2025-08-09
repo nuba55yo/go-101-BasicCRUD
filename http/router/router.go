@@ -3,10 +3,10 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 
-	v1 "github.com/nuba55yo/go-101-bookapi/http/handlers/v1"
-	v2 "github.com/nuba55yo/go-101-bookapi/http/handlers/v2"
-	"github.com/nuba55yo/go-101-bookapi/pkg/logger"
-	"github.com/nuba55yo/go-101-bookapi/service"
+	v1 "github.com/nuba55yo/go-101-BasicCRUD/http/handlers/v1"
+	v2 "github.com/nuba55yo/go-101-BasicCRUD/http/handlers/v2"
+	"github.com/nuba55yo/go-101-BasicCRUD/pkg/logger"
+	"github.com/nuba55yo/go-101-BasicCRUD/service"
 )
 
 func New(bookService service.BookService) *gin.Engine {

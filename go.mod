@@ -1,4 +1,4 @@
-module github.com/nuba55yo/go-101-bookapi
+module github.com/nuba55yo/go-101-BasicCRUD
 
 go 1.24.6
 

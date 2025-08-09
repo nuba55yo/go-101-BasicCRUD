@@ -4,10 +4,10 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/nuba55yo/go-101-bookapi/dto"
-	"github.com/nuba55yo/go-101-bookapi/models"
-	"github.com/nuba55yo/go-101-bookapi/pkg/logger"
-	"github.com/nuba55yo/go-101-bookapi/repository"
+	"github.com/nuba55yo/go-101-BasicCRUD/dto"
+	"github.com/nuba55yo/go-101-BasicCRUD/models"
+	"github.com/nuba55yo/go-101-BasicCRUD/pkg/logger"
+	"github.com/nuba55yo/go-101-BasicCRUD/repository"
 	"gorm.io/gorm"
 )
 
