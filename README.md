@@ -1,11 +1,5 @@
 # CRUD Book API — Go + Gin + GORM + PostgreSQL
 
-## Swagger Screenshots
-
-![Swagger UI v1](docs/images/swagger_v1.PNG)
-
-![Swagger UI v1](docs/images/swagger_v2.PNG)
-
 **ฟีเจอร์หลัก**
 - CRUD หนังสือด้วย **Gin** + **GORM** + **PostgreSQL**
 - **Swagger** พร้อม **API Version Control** (v1 / v2) — หน้าเดียว `/swagger` มี **dropdown** เลือกเวอร์ชัน
@@ -15,6 +9,16 @@
 - โครงสร้างแบบ **service/repository** แยกชั้นชัดเจน
 
 > คอนเซ็ปต์สำคัญ: เราแยก **ตัวสเปก (doc.json)** ของแต่ละเวอร์ชันไว้ที่ `/docs/v1/*`, `/docs/v2/*` แล้วทำหน้า Swagger UI กลางที่ `/swagger` (มี dropdown ให้เลือกเวอร์ชัน) — ดังนั้นสลับเวอร์ชันแล้ว asset ไม่พัง
+
+
+---
+
+## Swagger Screenshots
+
+![Swagger UI v1](docs/images/swagger_v1.PNG)
+
+![Swagger UI v1](docs/images/swagger_v2.PNG)
+
 
 ---
 
